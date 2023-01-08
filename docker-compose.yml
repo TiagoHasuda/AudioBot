@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+    prod:
+        container_name: discordbot.audiobot
+        build: .
+        restart: unless-stopped
+        env_file:
+            - .env
+        volumes:
+            - /home/tiagohasuda/projects/AudioBot:/discordbots/audiobot
