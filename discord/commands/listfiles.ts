@@ -3,7 +3,7 @@ import fs from 'fs'
 
 export async function listfiles(content: string, msg: Message<boolean>) {
   const files = fs.readdirSync('./files')
-  const buttons = files.map((file) =>
+  const buttons = files.filter(file => file.endsWith('.mp3')).map((file) =>
     new ButtonBuilder()
       .setCustomId(`play_${file}`)
       .setLabel(file)
