@@ -20,7 +20,7 @@ export async function listfiles(_: string, msg: Message<boolean>) {
         rows[message] = [[]]
       } else {
         index++
-        rows[index] = []
+        rows[message][index] = []
       }
     }
     rows[message][index].push(btn)
