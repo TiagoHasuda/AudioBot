@@ -9,14 +9,24 @@ export async function listfiles(_: string, msg: Message<boolean>) {
       .setLabel(file)
       .setStyle(ButtonStyle.Primary)
   )
-  const rows: ButtonBuilder[][] = [[]]
+  const rows: ButtonBuilder[][][] = [[[]]]
+  let message = 0
   let index = 0
   buttons.forEach((btn) => {
-    if (rows[index].length >= 5) {
-      index++
-      rows[index] = []
+    if (rows[message][index].length >= 5) {
+      if (rows[message].length >= 3) {
+        message++
+        index = 0
+        rows[message] = [[]]
+      } else {
+        index++
+        rows[index] = []
+      }
     }
-    rows[index].push(btn)
+    rows[message][index].push(btn)
   })
-  await msg.channel.send({ content: 'Files:', components: rows.map((row) => ({ type: ComponentType.ActionRow, components: row })) })
+  const promises = rows.map(async line => {
+    await msg.channel.send({ content: '', components: line.map((row) => ({ type: ComponentType.ActionRow, components: row })) })
+  })
+  await Promise.all(promises)
 }
