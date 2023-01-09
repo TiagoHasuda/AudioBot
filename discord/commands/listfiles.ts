@@ -9,11 +9,12 @@ export async function listfiles(_: string, msg: Message<boolean>) {
       .setLabel(file)
       .setStyle(ButtonStyle.Primary)
   )
-  const rows: ButtonBuilder[][] = []
+  const rows: ButtonBuilder[][] = [[]]
   let index = 0
   buttons.forEach((btn) => {
     if (rows[index].length >= 5) {
       index++
+      rows[index] = []
     }
     rows[index].push(btn)
   })
