@@ -33,6 +33,12 @@ export class AudioPlayerSingleton {
     this.player.play(resource)
   }
 
+  resume(): void {
+    if (!this.player)
+      return
+    this.player.unpause()
+  }
+
   stop(force?: boolean): void {
     if (!this.player)
       return

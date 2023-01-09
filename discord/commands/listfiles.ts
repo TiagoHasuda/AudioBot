@@ -28,5 +28,22 @@ export async function listfiles(_: string, msg: Message<boolean>) {
   const promises = rows.map(async line => {
     await msg.channel.send({ content: '', components: line.map((row) => ({ type: ComponentType.ActionRow, components: row })) })
   })
+
+  const controlButtons = [
+    new ButtonBuilder()
+      .setCustomId(`resume_`)
+      .setLabel('Play')
+      .setStyle(ButtonStyle.Secondary),
+    new ButtonBuilder()
+      .setCustomId(`pause_`)
+      .setLabel('Pause')
+      .setStyle(ButtonStyle.Secondary),
+    new ButtonBuilder()
+      .setCustomId(`stop_`)
+      .setLabel('Stop')
+      .setStyle(ButtonStyle.Secondary),
+  ]
+
+  await msg.channel.send({ content: '', components: [{ type: ComponentType.ActionRow, components: controlButtons }] })
   await Promise.all(promises)
 }
