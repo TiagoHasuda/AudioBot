@@ -5,7 +5,6 @@ import { AudioPlayerSingleton } from "../audioplayer";
 export async function connect(content: string, msg: Message<boolean>) {
   if (!msg.member || !msg.member.voice.channelId)
     return
-  console.log({ msg, member: msg.member, guild: msg.member.guild })
   const connection = joinVoiceChannel({
     channelId: msg.member.voice.channelId,
     guildId: msg.member.guild.id,
