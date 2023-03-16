@@ -31,19 +31,19 @@ export async function listfiles(_: string, msg: Message<boolean>) {
 
   const controlButtons = [
     new ButtonBuilder()
-      .setCustomId(`resume_`)
+      .setCustomId(`resume_resume`)
       .setLabel('Play')
       .setStyle(ButtonStyle.Secondary),
     new ButtonBuilder()
-      .setCustomId(`pause_`)
+      .setCustomId(`pause_pause`)
       .setLabel('Pause')
       .setStyle(ButtonStyle.Secondary),
     new ButtonBuilder()
-      .setCustomId(`stop_`)
+      .setCustomId(`stop_stop`)
       .setLabel('Stop')
       .setStyle(ButtonStyle.Secondary),
     new ButtonBuilder()
-      .setCustomId(`reset_`)
+      .setCustomId(`reset_reset`)
       .setLabel('Reset')
       .setStyle(ButtonStyle.Secondary),
   ]
