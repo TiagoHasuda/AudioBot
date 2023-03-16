@@ -37,6 +37,7 @@ export function InitializeDiscord(): void {
 
   client.on(Events.InteractionCreate, (interaction) => {
     const [command, content] = (interaction as any).customId.replace(/^([^_]*)_(.*)$/, '$1:::$2').split(':::')
+    console.log({ user: interaction.user.username, content })
     handleInteraction(command, content, interaction)
   })
 

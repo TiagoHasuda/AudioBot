@@ -42,6 +42,10 @@ export async function listfiles(_: string, msg: Message<boolean>) {
       .setCustomId(`stop_`)
       .setLabel('Stop')
       .setStyle(ButtonStyle.Secondary),
+    new ButtonBuilder()
+      .setCustomId(`reset_`)
+      .setLabel('Reset')
+      .setStyle(ButtonStyle.Secondary),
   ]
 
   await msg.channel.send({ content: '', components: [{ type: ComponentType.ActionRow, components: controlButtons }] })
