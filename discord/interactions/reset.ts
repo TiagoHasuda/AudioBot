@@ -6,7 +6,6 @@ export async function reset(_: string, interaction: Interaction<CacheType>) {
   const player = AudioPlayerSingleton.getAudioPlayer()
   await player.disconnect(interaction.client)
   await new Promise((res) => setTimeout(res, 1000))
-  console.log({ channelId: (interaction.member as GuildMember).voice.channelId, guildId: interaction.guild?.id, voiceAdapterCreator: interaction.guild?.voiceAdapterCreator })
   const connection = joinVoiceChannel({
     channelId: (interaction.member as GuildMember).voice.channelId as string,
     guildId: interaction.guild?.id as string,
